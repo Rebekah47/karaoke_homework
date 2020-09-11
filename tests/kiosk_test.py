@@ -30,3 +30,24 @@ class TestKiosk(unittest.TestCase):
     
     def test_kiosk_has_till(self):
         self.assertEqual(500, self.kiosk.till)
+    
+    def test_increase_till(self):
+        self.kiosk.increase_till(100)
+        self.assertEqual(600, self.kiosk.till)
+    
+    def test_put_room_in_use(self):
+        self.kiosk.put_room_in_use(self.room_1)
+        self.assertEqual(2, self.kiosk.rooms_available)
+    
+    def test_add_room_to_list(self):
+        self.kiosk.add_room_to_list(self.room_1)
+        self.assertEqual(1, len(self.kiosk.room_list))
+    
+    def test_book_room(self):
+        self.kiosk.book_room(self.room_1)
+        self.assertEqual(1, len(self.kiosk.room_list))
+        self.assertEqual(2, self.kiosk.rooms_available)
+
+    #check if room is free
+    def test_check_if_rooms_available(self):
+        self.assertEqual("Free", self.kiosk.check_if_rooms_available())
