@@ -5,9 +5,9 @@ from src.song import *
 from src.group import *
 from src.kiosk import *
 
-class TestGuest(unittest.TestCase):
+class TestKiosk(unittest.TestCase):
     def setUp(self):
-        
+
         self.kiosk = Kiosk("Sing Out", 500)
 
         self.group_1 = Group("One")
@@ -25,11 +25,8 @@ class TestGuest(unittest.TestCase):
         self.guest_2 = Guest("Michael", 26, 50)
         self.guest_3 = Guest("Andrew", 22, 30)
     
-    def test_guest_has_name(self):
-        self.assertEqual("Adam", self.guest_1.name)
-
-    def test_guest_has_age(self):
-        self.assertEqual(28, self.guest_1.age)
-
-    def test_guest_has_wallet(self):
-        self.assertEqual(60, self.guest_1.wallet)
+    def test_kiosk_has_name(self):
+        self.assertEqual("Sing Out", self.kiosk.name)
+    
+    def test_kiosk_has_till(self):
+        self.assertEqual(500, self.kiosk.till)
