@@ -27,3 +27,19 @@ class TestGroup(unittest.TestCase):
 
     def test_group_has_name(self):
         self.assertEqual("One", self.group_1.name)
+
+    #add customer to group
+    def test_add_customer_to_group(self):
+        self.group_1.add_guest_to_group(self.guest_1)
+        self.group_1.add_guest_to_group(self.guest_2)
+        self.assertEqual(2, len(self.group_1.guests))
+        self.assertEqual(2, self.group_1.group_amount)
+        self.assertEqual(110, self.group_1.collective_money)
+
+    #remove customer from group
+    def test_remove_customer_from_group(self):
+        self.group_1.add_guest_to_group(self.guest_1)
+        self.group_1.remove_guest_from_group(self.guest_1)
+        self.assertEqual(0, len(self.group_1.guests))
+        self.assertEqual(0, self.group_1.group_amount)
+        self.assertEqual(0, self.group_1.collective_money)

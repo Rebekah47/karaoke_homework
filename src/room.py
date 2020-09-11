@@ -1,5 +1,6 @@
 from src.guest import *
 from src.song import *
+from src.group import *
 
 class Room:
 
