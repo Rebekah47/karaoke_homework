@@ -43,3 +43,10 @@ class TestGroup(unittest.TestCase):
         self.assertEqual(0, len(self.group_1.guests))
         self.assertEqual(0, self.group_1.group_amount)
         self.assertEqual(0, self.group_1.collective_money)
+    
+    #check size of group
+    def test_group_size(self):
+        self.group_1.add_guest_to_group(self.guest_1)
+        self.assertEqual(1, self.group_1.check_group_size(self.group_1))
+
+

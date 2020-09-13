@@ -17,3 +17,10 @@ class Group:
         self.group_amount -= 1
         self.collective_money -= guest.wallet
     
+    def check_group_size(self, group):
+        group_size = len(group.guests)
+        return group_size
+    
+    
+
+    

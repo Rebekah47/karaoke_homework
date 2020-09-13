@@ -55,3 +55,9 @@ class TestRoom(unittest.TestCase):
         self.room_1.add_song(self.song_1)
         self.room_1.remove_song(self.song_1)
         self.assertEqual(0, len(self.room_1.song))
+    
+    #can group fit in room
+    # def test_group_can_fit_in_room(self):
+    #     self.group_1.add_guest_to_group(self.guest_1)
+    #     self.group_1.add_guest_to_group(self.guest_2)
+    #     self.assertEqual("Go On In", self.room_1.group_room_check(self.group_1, self.room_1))
