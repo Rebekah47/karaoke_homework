@@ -39,15 +39,35 @@ class TestKiosk(unittest.TestCase):
         self.kiosk.put_room_in_use(self.room_1)
         self.assertEqual(2, self.kiosk.rooms_available)
     
+    def test_make_room_available(self):
+        self.kiosk.put_room_in_use(self.room_1)
+        self.kiosk.make_room_available(self.room_1)
+    
     def test_add_room_to_list(self):
         self.kiosk.add_room_to_list(self.room_1)
         self.assertEqual(1, len(self.kiosk.room_list))
+    
+    def test_remove_room_from_list(self):
+        self.kiosk.add_room_to_list(self.room_1)
+        self.kiosk.remove_room_from_list(self.room_1)
+        self.assertEqual(0, len(self.kiosk.room_list))
     
     def test_book_room(self):
         self.kiosk.book_room(self.room_1)
         self.assertEqual(1, len(self.kiosk.room_list))
         self.assertEqual(2, self.kiosk.rooms_available)
+    
+    def test_unbook_room(self):
+        self.kiosk.book_room(self.room_1)
+        self.kiosk.unbook_room(self.room_1)
+        self.assertEqual(0, len(self.kiosk.room_list))
+        self.assertEqual(3, self.kiosk.rooms_available)
 
-    #check if room is free
+    #check if any room is free
     def test_check_if_rooms_available(self):
         self.assertEqual("Free", self.kiosk.check_if_rooms_available())
+    
+    def test_check_if_specfic_room_is_free(self):
+        self.kiosk.book_room(self.room_1)
+        self.assertEqual("Room in Use", self.kiosk.room_check(self.room_1))
+        self.assertEqual("Free", self.kiosk.room_check(self.room_2))
