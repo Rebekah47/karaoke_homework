@@ -1,6 +1,7 @@
 from src.guest import *
 from src.song import *
-from src.group import *
+from src.group import Group
+
 
 class Room:
 
@@ -22,11 +23,3 @@ class Room:
     
     def remove_song(self, song):
         self.song.remove(song)
-    
-    # def group_room_check(self, the_group, the_room):
-    #     group_size = Group.check_group_size(the_group)
-    #     the_room = self.capacity
-    #     if group_size <= the_room:
-    #         return "Go On In"
-    #     else:
-    #         return "Sorry, you guys won't fit."

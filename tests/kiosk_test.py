@@ -71,3 +71,21 @@ class TestKiosk(unittest.TestCase):
         self.kiosk.book_room(self.room_1)
         self.assertEqual("Room in Use", self.kiosk.room_check(self.room_1))
         self.assertEqual("Free", self.kiosk.room_check(self.room_2))
+
+    def test_group_can_fit_in_room(self):
+        self.group_1.add_guest_to_group(self.guest_1)
+        self.group_1.add_guest_to_group(self.guest_2)
+        self.assertEqual("Go On In", self.kiosk.group_room_check(self.group_1, self.room_1))
+    
+    def test_group_cannot_fit_in_room(self):
+        self.group_1.add_guest_to_group(self.guest_1)
+        self.group_1.add_guest_to_group(self.guest_2)
+        self.group_1.add_guest_to_group(self.guest_3)
+        self.assertEqual("Sorry, you guys won't fit.", self.kiosk.group_room_check(self.group_1, self.room_2))
+    
+    def test_collective_room_hire(self):
+        self.group_1.add_guest_to_group(self.guest_1)
+        self.group_1.add_guest_to_group(self.guest_2)
+        self.group_1.add_guest_to_group(self.guest_3)
+        self.kiosk.book_room(self.room_2)
+        self.assertEqual("It's all yours!", self.kiosk.collective_room_hire(self.group_1, self.room_1))

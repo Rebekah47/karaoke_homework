@@ -48,5 +48,11 @@ class TestGroup(unittest.TestCase):
     def test_group_size(self):
         self.group_1.add_guest_to_group(self.guest_1)
         self.assertEqual(1, self.group_1.check_group_size(self.group_1))
+    
+    def test_reduce_group_wallet(self):
+        self.group_1.add_guest_to_group(self.guest_1)
+        self.group_1.add_guest_to_group(self.guest_2)
+        self.group_1.reduce_group_wallet(self.room_1)
+        self.assertEqual(60, self.group_1.collective_money)
 
 
